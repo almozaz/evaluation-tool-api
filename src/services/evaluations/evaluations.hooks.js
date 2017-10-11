@@ -1,4 +1,15 @@
+const { populate } = require('feathers-hooks-common');
 
+const studentSchema = {
+  include: {
+    service: 'students',
+    nameAs: 'student',
+    parentField: 'studentId',
+    childField: '_id'
+  }
+};
+
+const addToStudent = require('../../hooks/add-to-student');
 
 module.exports = {
   before: {
@@ -12,10 +23,12 @@ module.exports = {
   },
 
   after: {
-    all: [],
+    all: [
+      populate({ schema: studentSchema }),
+    ],
     find: [],
     get: [],
-    create: [],
+    create: [addToStudent()],
     update: [],
     patch: [],
     remove: []
