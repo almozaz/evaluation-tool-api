@@ -9,6 +9,15 @@ const batchSchema = {
   }
 };
 
+const evaluationsSchema = {
+  include: {
+    service: 'evaluations',
+    nameAs: 'evaluations',
+    parentField: 'evaluations',
+    childField: '_id'
+  }
+};
+
 const addToClass = require('../../hooks/add-to-class');
 
 module.exports = {
@@ -24,7 +33,8 @@ module.exports = {
 
   after: {
     all: [
-      populate({ schema: batchSchema }),             // <----------------- Add the hook HERE!
+      populate({ schema: batchSchema }),
+      populate({ schema: evaluationsSchema }),
     ],
     find: [],
     get: [],

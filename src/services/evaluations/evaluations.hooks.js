@@ -9,6 +9,8 @@ const studentSchema = {
   }
 };
 
+const addToStudent = require('../../hooks/add-to-student');
+
 module.exports = {
   before: {
     all: [],
@@ -26,7 +28,7 @@ module.exports = {
     ],
     find: [],
     get: [],
-    create: [],
+    create: [addToStudent()],
     update: [],
     patch: [],
     remove: []
