@@ -1,4 +1,15 @@
+const { populate } = require('feathers-hooks-common');
 
+const batchSchema = {
+  include: {
+    service: 'classes',
+    nameAs: 'batch',
+    parentField: 'classId',
+    childField: '_id'
+  }
+};
+
+const addToClass = require('../../hooks/add-to-class');
 
 module.exports = {
   before: {
@@ -12,10 +23,12 @@ module.exports = {
   },
 
   after: {
-    all: [],
+    all: [
+      populate({ schema: batchSchema }),             // <----------------- Add the hook HERE!
+    ],
     find: [],
     get: [],
-    create: [],
+    create: [addToClass()],
     update: [],
     patch: [],
     remove: []

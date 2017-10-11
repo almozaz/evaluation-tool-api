@@ -8,7 +8,7 @@ module.exports = function (app) {
   const students = new Schema({
     name: { type: String, required: true },
     photo: { type: String, required: true },
-    class: { type: Schema.Types.ObjectId, ref: 'classes' },
+    classId: { type: Schema.Types.ObjectId, ref: 'classes' },
     evaluations: [{ type: Schema.Types.ObjectId, ref: 'evaluations' }],
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
