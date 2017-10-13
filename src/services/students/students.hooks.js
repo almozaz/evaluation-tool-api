@@ -1,4 +1,7 @@
 const { populate } = require('feathers-hooks-common');
+const { authenticate } = require('feathers-authentication').hooks;
+const { restrictToAuthenticated } = require('feathers-authentication-hooks');
+
 
 const batchSchema = {
   include: {
@@ -20,9 +23,14 @@ const evaluationsSchema = {
 
 const addToClass = require('../../hooks/add-to-class');
 
+const restrict = [
+  authenticate('jwt'),
+  restrictToAuthenticated(),
+];
+
 module.exports = {
   before: {
-    all: [],
+    all: [...restrict],
     find: [],
     get: [],
     create: [],
