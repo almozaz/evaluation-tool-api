@@ -8,6 +8,7 @@ module.exports = function (app) {
   const evaluations = new Schema({
     day: { type: Date, required: true },
     grade: { type: Number, required: true },
+    remarks: { type: String },
     studentId: { type: Schema.Types.ObjectId, ref: 'students' },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
