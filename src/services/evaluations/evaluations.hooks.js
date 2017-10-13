@@ -1,4 +1,6 @@
 const { populate } = require('feathers-hooks-common');
+const { authenticate } = require('feathers-authentication').hooks;
+const { restrictToAuthenticated } = require('feathers-authentication-hooks');
 
 const studentSchema = {
   include: {
@@ -11,9 +13,14 @@ const studentSchema = {
 
 const addToStudent = require('../../hooks/add-to-student');
 
+const restrict = [
+  authenticate('jwt'),
+  restrictToAuthenticated(),
+];
+
 module.exports = {
   before: {
-    all: [],
+    all: [...restrict],
     find: [],
     get: [],
     create: [],

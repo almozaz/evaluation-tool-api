@@ -6,5 +6,29 @@
     "default": 10,
     "max": 50
   },
-  "mongodb": "mongodb://localhost:27017/evaluation_tool_api"
+  "mongodb": "mongodb://localhost:27017/evaluation_tool_api",
+  "authentication": {
+    "secret": "f4b7253224f5e0e4e6be8dd3dc604e4555111be6b7649621a71d0a3e86a5b2962bdeddad95e9887b00282662c75a235c79da3f309899d8f1c5693e8bd930a17ade1a9f355a205eb388f823983c9257ccc7a16f255c9e2a1a59ae8d44be38f97e495d22d6a9a2cdf92c3bd5b39dd79680edf52dc3d2c4639a7b21fb4cc6a79bb1f9922dad70c6aa598dbfbb997b691576550c7c8e812373a10db763e080771a97b6cd1f32cbc322d5d94028cdcd4562d84e10cbec267d97b5d4b317bca81e8885efd89a82379a0cb4a1a27121ec5c4d067d5631d79060c46899ee8b634476dd67f2c00ac88d6c57ab96b60dff938277b85db0001f1b061240b03269b75b8e15ac",
+    "strategies": [
+      "jwt",
+      "local"
+    ],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "type": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "entity": "user",
+      "usernameField": "email",
+      "passwordField": "password"
+    }
+  }
 }
