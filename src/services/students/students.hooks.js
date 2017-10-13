@@ -2,16 +2,6 @@ const { populate } = require('feathers-hooks-common');
 const { authenticate } = require('feathers-authentication').hooks;
 const { restrictToAuthenticated } = require('feathers-authentication-hooks');
 
-
-const batchSchema = {
-  include: {
-    service: 'classes',
-    nameAs: 'batch',
-    parentField: 'classId',
-    childField: '_id'
-  }
-};
-
 const evaluationsSchema = {
   include: {
     service: 'evaluations',
@@ -41,7 +31,6 @@ module.exports = {
 
   after: {
     all: [
-      populate({ schema: batchSchema }),
       populate({ schema: evaluationsSchema }),
     ],
     find: [],

@@ -30,9 +30,7 @@ module.exports = {
   },
 
   after: {
-    all: [
-      populate({ schema: studentSchema }),
-    ],
+    all: [],
     find: [],
     get: [],
     create: [addToStudent()],
