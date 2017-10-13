@@ -27,13 +27,17 @@
     "start": "node src/",
     "mocha": "mocha test/ --recursive",
     "seed": "node src/seeds.js",
-     "dev": "nodemon --inspect src/"
+    "dev": "nodemon --inspect src/"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
     "compression": "^1.7.1",
     "cors": "^2.8.4",
     "feathers": "^2.2.2",
+    "feathers-authentication": "^1.2.7",
+    "feathers-authentication-hooks": "^0.1.4",
+    "feathers-authentication-jwt": "^0.3.2",
+    "feathers-authentication-local": "^0.4.4",
     "feathers-configuration": "^0.4.1",
     "feathers-errors": "^2.9.2",
     "feathers-hooks": "^2.1.0",
